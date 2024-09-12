@@ -1,5 +1,6 @@
 package com.urna.urna.Entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,8 +11,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Entity
 public class Pessoa {
     @NotBlank
     private String nome;

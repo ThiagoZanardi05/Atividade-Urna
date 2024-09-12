@@ -10,19 +10,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 @Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-public class Eleitor {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @NotBlank
-    private String nome;
-
-    @CPF
-    private String cpf;
+public class Eleitor extends Pessoa {
 
     @NotBlank
     private String profissao;
@@ -34,5 +22,6 @@ public class Eleitor {
     private String telefoneFixo;
 
     @Email
+    @NotBlank
     private String email;
 }
