@@ -14,6 +14,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Candidato extends Pessoa{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @NotNull
     @Column(unique = true)
     private int numero;
