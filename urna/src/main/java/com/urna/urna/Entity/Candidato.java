@@ -1,6 +1,7 @@
 package com.urna.urna.Entity;
 
 import com.urna.urna.Entity.enums.FuncaoCandidato;
+import com.urna.urna.Entity.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -14,14 +15,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Candidato extends Pessoa{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @NotNull
     @Column(unique = true)
     private int numero;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.ORDINAL) //1 para Prefeito e 2 para Vereador
     private FuncaoCandidato funcaoCandidato;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @Transient
+    private Long votos;
 }
