@@ -12,7 +12,6 @@ import org.hibernate.validator.constraints.br.CPF;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "eleitores")
 public class Eleitor {
 
     @Id
