@@ -1,5 +1,6 @@
 package com.urna.urna.Entity;
 
+import com.urna.urna.Entity.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -24,4 +25,8 @@ public class Eleitor extends Pessoa {
     @Email
     @NotBlank
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
 }
