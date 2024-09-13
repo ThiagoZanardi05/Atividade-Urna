@@ -32,6 +32,6 @@
         }
 
         public void deleteEleitor(Eleitor eleitor) {
-            eleitorRepository.delete(eleitor);
+        eleitor.setStatus(Status.INATIVO;
         }
     }
