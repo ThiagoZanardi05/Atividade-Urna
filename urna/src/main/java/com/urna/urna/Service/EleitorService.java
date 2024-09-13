@@ -15,13 +15,14 @@
         private EleitorRepository eleitorRepository;
 
         public Eleitor saveEleitor(Eleitor eleitor) {
+            if (eleitor.getCpf() == null || eleitor.getCpf().isBlank()) {
+                eleitor.setStatus(Status.PENDENTE);
+            }
+
             if (eleitor.getEmail() == null || eleitor.getEmail().isEmpty()) {
                 eleitor.setStatus(Status.PENDENTE);
-
-            }if (eleitor.getCpf() == null || eleitor.getCpf().isBlank()) {
-                eleitor.setStatus(Status.PENDENTE);
-
-            }else{
+            }
+            else{
                 eleitor.setStatus(Status.APTO);
             }
             return eleitorRepository.save(eleitor);
