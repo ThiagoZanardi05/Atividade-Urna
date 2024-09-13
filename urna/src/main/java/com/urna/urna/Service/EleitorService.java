@@ -6,6 +6,8 @@
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Service;
 
+    import java.util.List;
+
     @Service
     public class EleitorService {
 
@@ -16,11 +18,16 @@
             if (eleitor.getEmail() == null || eleitor.getEmail().isEmpty()) {
                 eleitor.setStatus(Status.PENDENTE);
 
-            }if (eleitor.getCpf() == null || eleitor.getCpf().isEmpty()) {
+            }if (eleitor.getCpf() == null || eleitor.getCpf().isBlank()) {
                 eleitor.setStatus(Status.PENDENTE);
 
+            }else{
+                eleitor.setStatus(Status.APTO);
             }
             return eleitorRepository.save(eleitor);
         }
 
+        public List<Eleitor> findAll() {
+            return eleitorRepository.findAll();
+        }
     }

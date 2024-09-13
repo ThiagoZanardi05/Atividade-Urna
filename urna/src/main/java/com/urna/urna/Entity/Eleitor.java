@@ -23,7 +23,6 @@ public class Eleitor extends Pessoa {
     private String telefoneFixo;
 
     @Email
-    @NotBlank
     private String email;
 
     @Enumerated(EnumType.STRING)
