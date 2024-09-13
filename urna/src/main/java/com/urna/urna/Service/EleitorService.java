@@ -32,6 +32,6 @@
         }
 
         public void deleteEleitor(Eleitor eleitor) {
-        eleitor.setStatus(Status.INATIVO;
+        eleitor.setStatus(Status.INATIVO);
         }
     }
