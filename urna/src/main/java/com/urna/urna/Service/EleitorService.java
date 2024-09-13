@@ -30,4 +30,8 @@
         public List<Eleitor> findAll() {
             return eleitorRepository.findAll();
         }
+
+        public void deleteEleitor(Eleitor eleitor) {
+            eleitorRepository.delete(eleitor);
+        }
     }
