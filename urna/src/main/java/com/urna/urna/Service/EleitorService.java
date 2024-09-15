@@ -7,6 +7,7 @@
     import org.springframework.stereotype.Service;
 
     import java.util.List;
+    import java.util.Optional;
 
     @Service
     public class EleitorService {
@@ -32,7 +33,18 @@
             return eleitorRepository.findAll();
         }
 
-        public void deleteEleitor(Eleitor eleitor) {
-        eleitor.setStatus(Status.INATIVO);
+        public void setEleitorInativo(Long id) {
+            Optional<Eleitor> eleitorOp = eleitorRepository.findById(id);
+
+            if (eleitorOp.isPresent()) {
+                Eleitor eleitor = eleitorOp.get();
+                eleitor.setStatus(Status.INATIVO);
+                eleitorRepository.save(eleitor);
+            } else {
+                throw new RuntimeException("Eleitor não existe");
+            }
+        }
+        public List<Eleitor> listarEleitoresAptos() {
+            return eleitorRepository.findByStatus(Status.APTO);
         }
     }

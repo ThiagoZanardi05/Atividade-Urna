@@ -33,6 +33,14 @@ public class EleitorController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
 
+    @PutMapping("/inativar/{id}")
+    public void inativarEleitor(@PathVariable Long id) {
+        eleitorService.setEleitorInativo(id);
+    }
+    @GetMapping("/ativos")
+    public List<Eleitor> listarEleitoresAtivos() {
+        return eleitorService.listarEleitoresAptos();
     }
 }
