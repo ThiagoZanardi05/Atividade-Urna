@@ -43,4 +43,17 @@ public class EleitorController {
     public List<Eleitor> listarEleitoresAtivos() {
         return eleitorService.listarEleitoresAptos();
     }
+
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<Eleitor> atualizarEleitor(@PathVariable Long id, @RequestBody Eleitor novosDadosEleitor) {
+        try {
+            Eleitor eleitorAtualizado = eleitorService.updateEleitor(id, novosDadosEleitor);
+            return new ResponseEntity<>(eleitorAtualizado, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

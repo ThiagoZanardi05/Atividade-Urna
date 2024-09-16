@@ -47,4 +47,35 @@
         public List<Eleitor> listarEleitoresAptos() {
             return eleitorRepository.findByStatus(Status.APTO);
         }
+
+        public Eleitor updateEleitor(Long id, Eleitor novosDadosEleitor) {
+            Optional<Eleitor> eleitorExistenteOp = eleitorRepository.findById(id);
+
+            if (eleitorExistenteOp.isPresent()) {
+                Eleitor eleitorExistente = eleitorExistenteOp.get();
+
+                if (eleitorExistente.getStatus() == Status.INATIVO) {
+                    novosDadosEleitor.setStatus(Status.INATIVO);
+                } else {
+                    if (novosDadosEleitor.getCpf() == null || novosDadosEleitor.getCpf().isBlank() ||
+                            novosDadosEleitor.getEmail() == null || novosDadosEleitor.getEmail().isEmpty()) {
+                        novosDadosEleitor.setStatus(Status.PENDENTE);
+                    } else {
+                        novosDadosEleitor.setStatus(Status.APTO);
+                    }
+                }
+
+                eleitorExistente.setProfissao(novosDadosEleitor.getProfissao());
+                eleitorExistente.setTelefoneCelular(novosDadosEleitor.getTelefoneCelular());
+                eleitorExistente.setTelefoneFixo(novosDadosEleitor.getTelefoneFixo());
+                eleitorExistente.setEmail(novosDadosEleitor.getEmail());
+                eleitorExistente.setCpf(novosDadosEleitor.getCpf());
+
+                return eleitorRepository.save(eleitorExistente);
+            } else {
+                throw new RuntimeException("Eleitor não encontrado");
+            }
+        }
     }
+
+
