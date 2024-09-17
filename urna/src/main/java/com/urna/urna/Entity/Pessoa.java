@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 @Data
 @Entity
-public class Pessoa {
+public abstract class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

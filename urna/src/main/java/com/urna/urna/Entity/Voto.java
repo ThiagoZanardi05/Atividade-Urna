@@ -35,7 +35,7 @@ public class Voto {
     private Candidato vereadorEscolhido;
 
     @PrePersist
-    public void prePersist(){
+    private void prePersist(){
         this.dataHoraVotacao = LocalDateTime.now();
         this.hashComprovante = UUID.randomUUID().toString();
     }

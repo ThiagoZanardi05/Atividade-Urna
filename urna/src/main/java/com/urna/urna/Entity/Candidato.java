@@ -2,6 +2,7 @@ package com.urna.urna.Entity;
 
 import com.urna.urna.Entity.enums.FuncaoCandidato;
 import com.urna.urna.Entity.enums.Status;
+import com.urna.urna.Entity.enums.StatusCandidato;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,10 +22,10 @@ public class Candidato extends Pessoa{
     private int numero;
 
     @Enumerated(EnumType.ORDINAL) //1 para Prefeito e 2 para Vereador
-    private FuncaoCandidato funcaoCandidato;
+    private FuncaoCandidato funcao;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private StatusCandidato statusCandidato;
 
     @Transient
     private Long votos;
